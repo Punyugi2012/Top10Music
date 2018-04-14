@@ -25,16 +25,36 @@ class APIFunc {
                 if let resultData = data {
                     do {
                         let jsonObject = try JSONSerialization.jsonObject(with: resultData, options: .allowFragments)
-                        print("\n\n\n\n\n\(jsonObject)\n\n\n\n\n")
-                        DispatchQueue.main.async(execute: {
-                            callBack("Call API Successful!!")
-                        })
+                        if
+                            let object = jsonObject as? [String:Any],
+                            let feed = object["feed"] as? [String:Any],
+                            let results = feed["results"] as? [Any]
+                        {
+                            for result in results {
+                                var music = result as? [String:Any]
+                                if let name = music?["name"] as? String {
+                                    print(name)
+                                }
+                                if let image = music?["artworkUrl100"] as? String {
+                                    print(image)
+                                }
+                                if let url = music?["url"] as? String {
+                                    print(url)
+                                }
+                                print("")
+                            }
+                        }
                     }
                     catch {
                         DispatchQueue.main.async(execute: {
-                            callBack("Call API Fail!!")
+                            callBack("JSON Serialization Error!!")
                         })
                     }
+                }
+                else {
+                    DispatchQueue.main.async(execute: {
+                        callBack("Call API Error!!")
+                    })
                 }
             }
         }
