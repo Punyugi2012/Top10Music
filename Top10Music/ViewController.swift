@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     }
     
     func finishedCallAPI(result: String) {
-        print(result)
+        let alertController = UIAlertController(title: result, message: nil, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

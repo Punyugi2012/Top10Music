@@ -22,9 +22,20 @@ class APIFunc {
                 })
             }
             else {
-                DispatchQueue.main.async(execute: {
-                    callBack("Call API Successful!!")
-                })
+                if let resultData = data {
+                    do {
+                        let jsonObject = try JSONSerialization.jsonObject(with: resultData, options: .allowFragments)
+                        print("\n\n\n\n\n\(jsonObject)\n\n\n\n\n")
+                        DispatchQueue.main.async(execute: {
+                            callBack("Call API Successful!!")
+                        })
+                    }
+                    catch {
+                        DispatchQueue.main.async(execute: {
+                            callBack("Call API Fail!!")
+                        })
+                    }
+                }
             }
         }
         task.resume()
