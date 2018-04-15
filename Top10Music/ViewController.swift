@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
+    var musicVideos: [MusicVideo] = []
     
     @IBAction func seachTouched(_ sender: AnyObject) {
         if Reachability.isConnectNetwork() {
@@ -34,8 +35,15 @@ class ViewController: UIViewController {
         statusLabel.text = ""
     }
     
-    func finishedCallAPI(result: String) {
-      
+    func finishedCallAPI(_ musicVideos: [MusicVideo]) {
+        self.musicVideos = musicVideos
+        for musicVideo in self.musicVideos {
+            print(musicVideo.number)
+            print(musicVideo.name)
+            print(musicVideo.urlImage)
+            print(musicVideo.urlVideo)
+            print("")
+        }
     }
 
     override func didReceiveMemoryWarning() {

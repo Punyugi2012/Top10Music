@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B835D18E208346D80092AC60 /* MusicVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B835D18D208346D80092AC60 /* MusicVideo.swift */; };
 		B8373315208201B000CD5A20 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8373314208201B000CD5A20 /* Reachability.swift */; };
 		B839AE3C2081097D00BA9450 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AE3B2081097D00BA9450 /* AppDelegate.swift */; };
 		B839AE3E2081097D00BA9450 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B839AE3D2081097D00BA9450 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B835D18D208346D80092AC60 /* MusicVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideo.swift; sourceTree = "<group>"; };
 		B8373314208201B000CD5A20 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B839AE382081097D00BA9450 /* Top10Music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top10Music.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B839AE3B2081097D00BA9450 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				B839AE472081098200BA9450 /* Info.plist */,
 				B83F427F20810A4D00F80DC7 /* APIFunc.swift */,
 				B8373314208201B000CD5A20 /* Reachability.swift */,
+				B835D18D208346D80092AC60 /* MusicVideo.swift */,
 			);
 			path = Top10Music;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				B83F428020810A4D00F80DC7 /* APIFunc.swift in Sources */,
 				B839AE3E2081097D00BA9450 /* ViewController.swift in Sources */,
+				B835D18E208346D80092AC60 /* MusicVideo.swift in Sources */,
 				B8373315208201B000CD5A20 /* Reachability.swift in Sources */,
 				B839AE3C2081097D00BA9450 /* AppDelegate.swift in Sources */,
 			);
