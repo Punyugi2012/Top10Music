@@ -17,9 +17,23 @@ class MusicTableViewCell: UITableViewCell {
         // Initialization code
     }
     func setValue(_ musicVideo: MusicVideo) {
-        numberLabel.text = String(musicVideo.number)
-        nameLabel.text = musicVideo.name
-        videoImage.image = UIImage(named: "nopic")
+        numberLabel.text = "อันดับที่ \(musicVideo.Number)"
+        nameLabel.text = musicVideo.Name
+        if musicVideo.VideoImage != nil {
+            videoImage.image = musicVideo.VideoImage
+        }
+        else {
+            setImage(musicVideo)
+        }
+    }
+    func setImage(_ musicVideo: MusicVideo) {
+        if let data = try? Data(contentsOf: URL(string: musicVideo.UrlImage)!) {
+            musicVideo.VideoImage = UIImage(data: data)!
+            videoImage.image = musicVideo.VideoImage
+        }
+        else {
+            videoImage.image = UIImage(named: "nopic")
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

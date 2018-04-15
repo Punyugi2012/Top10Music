@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if Reachability.isConnectNetwork() {
             let api = APIFunc()
             api.callAPI("https://rss.itunes.apple.com/api/v1/th/music-videos/top-music-videos/all/10/non-explicit.json", callBack: finishedCallAPI)
-            statusLabel.text = "internet connected"
+            statusLabel.text = "internet connection ok"
             statusLabel.backgroundColor = UIColor.green
         }
         else {
@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(alertAction)
             present(alertController, animated: true, completion: nil)
-            statusLabel.text = "internet failed"
+            statusLabel.text = "internet connection fail"
             statusLabel.backgroundColor = UIColor.red
         }
     }
@@ -56,6 +56,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! MusicTableViewCell
         cell.setValue(musicVideos[indexPath.row])
         return cell
+    }
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
 

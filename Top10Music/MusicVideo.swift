@@ -7,16 +7,49 @@
 //
 
 import Foundation
+import UIKit
 
 class MusicVideo {
-    var number: Int
-    var name: String
-    var urlImage: String
-    var urlVideo: String
+    private var number: Int
+    private var name: String
+    private var urlImage: String
+    private var urlVideo: String
+    private var videoImage: UIImage!
+    
+    var Number: Int {
+        get {
+            return self.number
+        }
+    }
+    var Name: String {
+        get {
+            return self.name
+        }
+    }
+    var UrlImage: String {
+        get {
+            return self.urlImage
+        }
+    }
+    var UrlVideo: String {
+        get {
+            return self.urlVideo
+        }
+    }
+    var VideoImage: UIImage! {
+        set (newValue) {
+            self.videoImage = newValue
+        }
+        get {
+            return self.videoImage
+        }
+    }
+   
     init(_ number: Int, _ name: String, _ urlImage: String, _ urlVideo: String) {
         self.number = number
         self.name = name
         self.urlImage = urlImage
         self.urlVideo = urlVideo
+        self.videoImage = nil
     }
 }
