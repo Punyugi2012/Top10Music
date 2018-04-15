@@ -27,12 +27,16 @@ class MusicTableViewCell: UITableViewCell {
         }
     }
     func setImage(_ musicVideo: MusicVideo) {
-        if let data = try? Data(contentsOf: URL(string: musicVideo.UrlImage)!) {
-            musicVideo.VideoImage = UIImage(data: data)!
-            videoImage.image = musicVideo.VideoImage
-        }
-        else {
-            videoImage.image = UIImage(named: "nopic")
+        DispatchQueue.global(qos: .background).async {
+            if let data = try? Data(contentsOf: URL(string: musicVideo.UrlImage)!) {
+                musicVideo.VideoImage = UIImage(data: data)!
+            }
+            else {
+                musicVideo.VideoImage = UIImage(named: "nopic")
+            }
+            DispatchQueue.main.async {
+                self.videoImage.image = musicVideo.VideoImage
+            }
         }
     }
 
