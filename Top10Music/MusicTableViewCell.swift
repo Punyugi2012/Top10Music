@@ -16,27 +16,27 @@ class MusicTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func setValue(_ musicVideo: MusicVideo) {
+    func setValue(_ musicVideo: MusicVideo, _ cell: MusicTableViewCell) {
         numberLabel.text = "อันดับที่ \(musicVideo.Number)"
         nameLabel.text = musicVideo.Name
         if musicVideo.VideoImage != nil {
             videoImage.image = musicVideo.VideoImage
         }
         else {
-            setImage(musicVideo)
+            setImage(musicVideo, cell)
         }
     }
-    func setImage(_ musicVideo: MusicVideo) {
+    func setImage(_ musicVideo: MusicVideo, _ cell: MusicTableViewCell) {
         DispatchQueue.global(qos: .background).async {
             if let data = try? Data(contentsOf: URL(string: musicVideo.UrlImage)!) {
                 musicVideo.VideoImage = UIImage(data: data)!
                 DispatchQueue.main.async {
-                    self.videoImage.image = musicVideo.VideoImage
+                    cell.videoImage.image = musicVideo.VideoImage
                 }
             }
             else {
                 DispatchQueue.main.async {
-                    self.videoImage.image = UIImage(named: "nopic")
+                    cell.videoImage.image = UIImage(named: "nopic")
                 }
             }
         }

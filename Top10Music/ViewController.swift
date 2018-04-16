@@ -54,8 +54,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         statusLabel.text = ""
-//        slider.value = Float(sliderValue)
-//        sliderValueLabel.text = String(sliderValue)
         sliderValue = loadConfig()
         slider.value = Float(sliderValue)
         sliderValueLabel.text = String(sliderValue)
@@ -78,8 +76,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! MusicTableViewCell
+        if musicVideos[indexPath.row].VideoImage == nil {
+            cell.videoImage.image = UIImage(named: "nopic")
+        }
         if Reachability.isConnectNetwork() {
-            cell.setValue(musicVideos[indexPath.row])
+            cell.setValue(musicVideos[indexPath.row], cell)
             statusLabel.text = "internet connection ok"
             statusLabel.backgroundColor = UIColor.green
         }
