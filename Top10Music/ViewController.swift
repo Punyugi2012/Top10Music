@@ -12,13 +12,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sliderValueLabel: UILabel!
+    var sliderValue: Int = 2
+    @IBAction func sliderValueChanged(_ sender: Any) {
+        sliderValue = Int(slider.value)
+        sliderValueLabel.text = String(sliderValue)
+    }
     var musicVideos: [MusicVideo] = []
     
     @IBAction func seachTouched(_ sender: AnyObject) {
         if Reachability.isConnectNetwork() {
             let api = APIFunc()
-            api.callAPI("https://rss.itunes.apple.com/api/v1/th/music-videos/top-music-videos/all/100/non-explicit.json", callBack: finishedCallAPI)
+            api.callAPI("https://rss.itunes.apple.com/api/v1/th/music-videos/top-music-videos/all/\(sliderValue)/non-explicit.json", callBack: finishedCallAPI)
             statusLabel.text = "internet connection ok"
             statusLabel.backgroundColor = UIColor.green
         }
@@ -35,6 +41,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         statusLabel.text = ""
+        slider.value = Float(sliderValue)
+        sliderValueLabel.text = String(sliderValue)
     }
     
     func finishedCallAPI(_ musicVideos: [MusicVideo]) {

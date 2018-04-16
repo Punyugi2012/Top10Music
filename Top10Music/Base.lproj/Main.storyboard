@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,15 +102,47 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="s17-nA-xbN"/>
+                    <navigationItem key="navigationItem" id="s17-nA-xbN">
+                        <nil key="title"/>
+                        <rightBarButtonItems>
+                            <barButtonItem style="done" id="HNo-f5-nsD">
+                                <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="2" maxValue="100" id="IOR-Mt-lvx">
+                                    <rect key="frame" x="302" y="5" width="92" height="34"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <action selector="sliderValueChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SrY-AI-6oV"/>
+                                    </connections>
+                                </slider>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="X1g-9E-RRT">
+                                <view key="customView" contentMode="scaleToFill" id="ba7-hd-QyS">
+                                    <rect key="frame" x="202" y="5.6666666666666679" width="92" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCs-tg-g6Z">
+                                            <rect key="frame" x="8" y="2" width="84" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
+                        <outlet property="slider" destination="IOR-Mt-lvx" id="nIu-Xt-De8"/>
+                        <outlet property="sliderValueLabel" destination="lCs-tg-g6Z" id="doX-EW-3bd"/>
                         <outlet property="statusLabel" destination="2RH-4Y-cUB" id="Sgt-fL-TFu"/>
                         <outlet property="tableView" destination="6yg-Fb-6KW" id="axI-Cm-WcD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="130"/>
+            <point key="canvasLocation" x="1050.7246376811595" y="129.61956521739131"/>
         </scene>
         <!--Music Detail View Controller-->
         <scene sceneID="EHW-7C-RoS">
