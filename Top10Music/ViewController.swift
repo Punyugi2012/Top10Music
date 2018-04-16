@@ -60,6 +60,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MusicDetail" {
+            if let detailPage = segue.destination as? MusicDetailViewController {
+                if let IndexPath = tableView.indexPathForSelectedRow {
+                    let musicVideo = musicVideos[IndexPath.row]
+                    detailPage.musicVideo = musicVideo
+                }
+            }
+        }
+    }
 
 
 }
