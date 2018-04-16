@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.videoImage.image = UIImage(named: "nopic")
         }
         if Reachability.isConnectNetwork() {
-            cell.setValue(musicVideos[indexPath.row], cell)
+            cell.setValue(musicVideos[indexPath.row])
             statusLabel.text = "internet connection ok"
             statusLabel.backgroundColor = UIColor.green
         }
