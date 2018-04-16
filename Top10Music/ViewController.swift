@@ -21,6 +21,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     var musicVideos: [MusicVideo] = []
     
+    func saveConfig() {
+        UserDefaults.standard.set(slider.value, forKey: "Config")
+        UserDefaults.standard.synchronize()
+    }
+    func loadConfig() -> Int {
+        var returnValue = 2
+        if let sliderValue = UserDefaults.standard.value(forKey: "Config") as? Float {
+            returnValue = Int(sliderValue)
+        }
+        return returnValue
+    }
+    
     @IBAction func seachTouched(_ sender: AnyObject) {
         if Reachability.isConnectNetwork() {
             let api = APIFunc()
@@ -36,11 +48,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             statusLabel.text = "internet connection fail"
             statusLabel.backgroundColor = UIColor.red
         }
+        saveConfig()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         statusLabel.text = ""
+//        slider.value = Float(sliderValue)
+//        sliderValueLabel.text = String(sliderValue)
+        sliderValue = loadConfig()
         slider.value = Float(sliderValue)
         sliderValueLabel.text = String(sliderValue)
     }
