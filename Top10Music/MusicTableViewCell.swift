@@ -30,12 +30,14 @@ class MusicTableViewCell: UITableViewCell {
         DispatchQueue.global(qos: .background).async {
             if let data = try? Data(contentsOf: URL(string: musicVideo.UrlImage)!) {
                 musicVideo.VideoImage = UIImage(data: data)!
+                DispatchQueue.main.async {
+                    self.videoImage.image = musicVideo.VideoImage
+                }
             }
             else {
-                musicVideo.VideoImage = UIImage(named: "nopic")
-            }
-            DispatchQueue.main.async {
-                self.videoImage.image = musicVideo.VideoImage
+                DispatchQueue.main.async {
+                    self.videoImage.image = UIImage(named: "nopic")
+                }
             }
         }
     }

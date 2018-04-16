@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBAction func seachTouched(_ sender: AnyObject) {
         if Reachability.isConnectNetwork() {
             let api = APIFunc()
-            api.callAPI("https://rss.itunes.apple.com/api/v1/th/music-videos/top-music-videos/all/10/non-explicit.json", callBack: finishedCallAPI)
+            api.callAPI("https://rss.itunes.apple.com/api/v1/th/music-videos/top-music-videos/all/100/non-explicit.json", callBack: finishedCallAPI)
             statusLabel.text = "internet connection ok"
             statusLabel.backgroundColor = UIColor.green
         }
@@ -54,7 +54,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoCell") as! MusicTableViewCell
-        cell.setValue(musicVideos[indexPath.row])
+        if Reachability.isConnectNetwork() {
+            cell.setValue(musicVideos[indexPath.row])
+            statusLabel.text = "internet connection ok"
+            statusLabel.backgroundColor = UIColor.green
+        }
+        else {
+            statusLabel.text = "internet connection fail"
+            statusLabel.backgroundColor = UIColor.red
+        }
         return cell
     }
     override var prefersStatusBarHidden: Bool {
